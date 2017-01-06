@@ -46,11 +46,3 @@ body {
   max-height: 20vmin;
   padding: 4vmin;
 }
-
-.hidden {
-  display: none;
-}
-
-.shown {
-  display: block;
-}
