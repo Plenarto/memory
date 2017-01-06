@@ -26,8 +26,10 @@ $(document).ready(function(){
   var cardBack = '<img class="cardBack" src="img/gray.png">';
 
   //puts pictures from doubleCards array in td's + puts pictures of cardBack + pictures of cardFound
+  //and adds to each td unique id of "td" + number
   for (var j=0; j<=doubleCards.length; j++) {
       $("#board td").eq(j).html(doubleCards[j] + cardBack);
+      $("#board td").eq(j).attr("id", "td" + j);
   }
 
   $(".cardFront").css("display", "none");
@@ -35,6 +37,9 @@ $(document).ready(function(){
 /////////////////////// GAME //////////////////////////////////
 //array of selected images;
 var selected = [];
+
+//display number of user moves
+var movesNumber = "";
 
 //after clicking BACK OF THE CARD
 $(".cardBack").click(function(){
@@ -44,17 +49,30 @@ $(".cardBack").click(function(){
     $(this).siblings().css("display", "block");
     //front of the card is added to array selected
     var selectedCard = $(this).siblings();
+
     selected.push(selectedCard);
+
+    for (var i=0; i<selected.length; i++) {
+      console.log(selected[i]);
+    }
 
     //check selected array length
     //if it's two, compare pictures
     if (selected.length === 2) {
       console.log("selected = 2");
-      pictureOneSource = selected[0].eq(0).attr("src")
-      pictureTwoSource = selected[1].eq(0).attr("src")
-      if (pictureOneSource === pictureTwoSource) {
+      //sources (paths) of selected front cards
+      var pictureOneSource = selected[0].eq(0).attr("src");
+      var pictureTwoSource = selected[1].eq(0).attr("src");
+      //variables for ID's of selected cards (for later comparison)
+      var IdSelectedParent1 = selected[0].parents().eq(0).attr("id");
+      var IdSelectedParent2 = selected[1].parents().eq(0).attr("id");
+
+      //pictures are same and they are in different TD's (their parent's id's are different);
+      if ((pictureOneSource === pictureTwoSource) && (IdSelectedParent1 !== IdSelectedParent2)) {
+        //shows pictures of found cards with opacity
         selected[0].eq(0).addClass("found");
         selected[1].eq(0).addClass("found");
+        //hides grey side of the found card
         selected[0].eq(0).siblings().addClass("foundHidden");
         selected[1].eq(0).siblings().addClass("foundHidden");
         console.log("same pictures");
@@ -76,6 +94,9 @@ $(".cardBack").click(function(){
       console.log("selected<2");
     }
 
+    //add 1 to number of user moves
+    movesNumber++;
+    $("#movesNumber").text(movesNumber);
 });
 
 
