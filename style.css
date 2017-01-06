@@ -11,6 +11,12 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+h1 {
+  font-weight: bold;
+  font-size: 1.5em;
+  font-family: 'Roboto Slab', serif;
+}
+
 #main-container {
   max-width: 800px;
   background-color: #ECECEC;
@@ -25,6 +31,7 @@ body {
   position: relative;
 }
 
+
 #result {
   padding-bottom: 20px;
 }
@@ -35,21 +42,18 @@ body {
 }
 
 #board td {
-  border: solid gray 1px;
-  /* add this later:
-  width: 20vmin;
-  */
-  min-height: 20vmin;
-  min-width: 20vmin;
-  border-radius: 5px;
   align-items: center;
   vertical-align: middle;
 }
 
 #board img {
-  max-width: 20vmin;
-  max-height: 20vmin;
-  padding: 4vmin;
+  width: 17vmin;
+  height: 17vmin;
+  padding: 1vmin;
+}
+
+.cardBack {
+  opacity: 0.2;
 }
 
 .found {

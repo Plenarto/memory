@@ -23,7 +23,7 @@ $(document).ready(function(){
 
 
   //Back side of the card
-  var cardBack = '<img class="cardBack" src="img/gray.png">';
+  var cardBack = '<img class="cardBack" src="img/cardback5.svg">';
 
   //puts pictures from doubleCards array in td's + puts pictures of cardBack + pictures of cardFound
   //and adds to each td unique id of "td" + number
@@ -59,7 +59,6 @@ $(".cardBack").click(function(){
     //check selected array length
     //if it's two, compare pictures
     if (selected.length === 2) {
-      console.log("selected = 2");
       //sources (paths) of selected front cards
       var pictureOneSource = selected[0].eq(0).attr("src");
       var pictureTwoSource = selected[1].eq(0).attr("src");
@@ -75,10 +74,9 @@ $(".cardBack").click(function(){
         //hides grey side of the found card
         selected[0].eq(0).siblings().addClass("foundHidden");
         selected[1].eq(0).siblings().addClass("foundHidden");
-        console.log("same pictures");
       }
       else if (pictureOneSource !== pictureTwoSource) {
-        console.log("different pictures");
+
       }
     }
     else if (selected.length > 2) {
@@ -91,7 +89,7 @@ $(".cardBack").click(function(){
       selected.push(selectedCard);
     }
     else if (selected.length < 2) {
-      console.log("selected<2");
+
     }
 
     //add 1 to number of user moves
@@ -115,8 +113,6 @@ $(".cardFront").click(function(){
     }
 
 });
-
-
 
 
 
