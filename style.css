@@ -35,7 +35,8 @@ body {
   /* add this later:
   width: 20vmin;
   */
-  height: 20vmin;
+  min-height: 20vmin;
+  min-width: 20vmin;
   border-radius: 5px;
   align-items: center;
   vertical-align: middle;
@@ -45,4 +46,13 @@ body {
   max-width: 20vmin;
   max-height: 20vmin;
   padding: 4vmin;
+}
+
+.found {
+  display: block !important;
+  opacity: 0.5;
+}
+
+.foundHidden {
+  display: none !important;
 }

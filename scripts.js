@@ -33,27 +33,65 @@ $(document).ready(function(){
   $(".cardFront").css("display", "none");
 
 /////////////////////// GAME //////////////////////////////////
+//array of selected images;
+var selected = [];
 
-//after clicking back of the card
+//after clicking BACK OF THE CARD
 $(".cardBack").click(function(){
-  //hide back of the card picture
-  $(this).css("display", "none");
-  //show front of the card
-  $(this).siblings().css("display", "block");
+    //hide back of the card picture
+    $(this).css("display", "none");
+    //show front of the card
+    $(this).siblings().css("display", "block");
+    //front of the card is added to array selected
+    var selectedCard = $(this).siblings();
+    selected.push(selectedCard);
+
+    //check selected array length
+    //if it's two, compare pictures
+    if (selected.length === 2) {
+      console.log("selected = 2");
+      pictureOneSource = selected[0].eq(0).attr("src")
+      pictureTwoSource = selected[1].eq(0).attr("src")
+      if (pictureOneSource === pictureTwoSource) {
+        selected[0].eq(0).addClass("found");
+        selected[1].eq(0).addClass("found");
+        selected[0].eq(0).siblings().addClass("foundHidden");
+        selected[1].eq(0).siblings().addClass("foundHidden");
+        console.log("same pictures");
+      }
+      else if (pictureOneSource !== pictureTwoSource) {
+        console.log("different pictures");
+      }
+    }
+    else if (selected.length > 2) {
+      console.log("selected > 2");
+      selected[0].eq(0).css("display", "none");
+      selected[1].eq(0).css("display", "none");
+      selected[0].eq(0).siblings().css("display", "block");
+      selected[1].eq(0).siblings().css("display", "block");
+      selected = [];
+      selected.push(selectedCard);
+    }
+    else if (selected.length < 2) {
+      console.log("selected<2");
+    }
+
 });
 
-//after clicking front of the card
-$(".cardFront").click(function(){
-  //if this card has been found in the past, do nothing
-  if($(this).hasClass("found")) {
 
-  }
-  else {
-    //hide front of the card picture
-    $(this).css("display", "none");
-    //show back of the card
-    $(this).siblings().css("display", "block");
-  }
+
+//after clicking FRONT OF THE CARD
+$(".cardFront").click(function(){
+    //if this card has been found in the past, do nothing
+    if($(this).hasClass("found")) {
+
+    }
+    else {
+      //hide front of the card picture
+      $(this).css("display", "none");
+      //show back of the card
+      $(this).siblings().css("display", "block");
+    }
 
 });
 
