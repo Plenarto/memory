@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -13,7 +15,7 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 2em;
   font-family: 'Roboto Slab', serif;
 }
 
@@ -39,17 +41,19 @@ h1 {
 #board {
   margin: 0 auto;
   border-spacing: 5px;
+
 }
 
 #board td {
   align-items: center;
-  vertical-align: middle;
+  margin: 0;
+  padding: 0;
 }
 
 #board img {
-  width: 17vmin;
-  height: 17vmin;
-  padding: 1vmin;
+  width: 15vh;
+  height: 15vh;
+  display: block; /* fixes white space under image */
 }
 
 .cardBack {
